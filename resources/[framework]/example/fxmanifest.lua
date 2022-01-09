@@ -9,4 +9,4 @@ dependency 'webpack'
 dependency 'yarn'
 
 webpack_config 'client.config.js'
-client_script 'dist/main.js'
+client_script 'dist/index.js'

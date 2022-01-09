@@ -1,4 +1,5 @@
-import { Vector3 } from ".";
+import { Vector3, RayCastGamePlayCamera } from ".";
+
 
 /**
  * 
@@ -92,30 +93,54 @@ export function getPlayers() : number[]
     return players;
 }
 
+/**
+ * show you a marker on top of the entity player target to see which player your are currently targeting : 
+ */
 export function showMarkerTarget() : void
 {
-	const players = getPlayers()
-	let closestDistance = -1
-	let closestPlayer = -1
-	let ply = GetPlayerPed(-1)
-	let plyCoords = GetEntityCoords(ply, false)
+	const players         : number[] = getPlayers();
+	const ply             : number   = PlayerPedId();
+	const plyCoords       : Vector3  = new Vector3(GetEntityCoords(ply, false));
+	let closestDistance   : number   = -1;
+	let closestPlayer     : number   = -1;
+    const [hit, entity] = RayCastGamePlayCamera(1000);
 
-	for (let value of players)
+	for (const value of players)
     {
-        let target = GetPlayerPed(value)
+        const target = GetPlayerPed(value)
 		if(target != ply) 
         {
-            const playerCoord = new Vector3(GetEntityCoords(GetPlayerPed(value), false));
-            const dist        = playerCoord.distance(new Vector3(plyCoords));
-			if (dist < 2) 
+            const playerCoord  = new Vector3(GetEntityCoords(GetPlayerPed(value), false));
+            const dist         = playerCoord.distance(plyCoords);
+			if (dist < 5) 
             {
 				if(closestDistance == -1 || closestDistance > dist) 
                 {
-                    closestPlayer = value
-					closestDistance = dist
-					DrawMarker(0, playerCoord["x"], playerCoord["y"], playerCoord["z"] + 1, 0, 0, 0, 0, 0, 0, 0.1, 0.1, 0.1, 255, 255, 255, 200, true, false, 0, false, "", "", false);
+                    if(hit && entity == GetPlayerPed(value))
+                    {
+                        closestPlayer   = value;
+                        closestDistance = dist;
+                        DrawMarker(0, playerCoord.x, playerCoord.y, playerCoord.z + 1, 0, 0, 0, 0, 0, 0, 0.1, 0.1, 0.1, 255, 255, 255, 200, true, false, 2, false, null, null, false);
+                    }
                 }
             }
         }
     }
+}
+
+export function HidAllHudFrame() : void 
+{
+    HideHelpTextThisFrame();
+	HideHudAndRadarThisFrame();
+	HideHudComponentThisFrame(1);
+	HideHudComponentThisFrame(2);
+	HideHudComponentThisFrame(3);
+	HideHudComponentThisFrame(4);
+	HideHudComponentThisFrame(6);
+	HideHudComponentThisFrame(7);
+	HideHudComponentThisFrame(8);
+	HideHudComponentThisFrame(9);
+	HideHudComponentThisFrame(13);
+	HideHudComponentThisFrame(17);
+	HideHudComponentThisFrame(20);
 }

@@ -1,4 +1,4 @@
-import {Vector3, DrawText3D} from '../../[dependancies]/src';
+import {Vector3, DrawText3D, showMarkerTarget} from '../../[dependancies]/src';
 
 //Function which return nothing (void) called to draw a 3d text basing on your marker distance :
 function showMarkerDistance() : void
