@@ -1,0 +1,23 @@
+{
+    "name": "fivem-ninjasource",
+    "version": "1.0.0",
+    "description": "Source to help developer ",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "scripts": {
+      "build": "tsc",
+      "format": "prettier --write \"src/**/*.ts\"",
+      "prepare": "npm run build"
+    },
+    "files": [
+      "lib/**/*"
+    ],
+    "author": "SuperCoolNinja",
+    "license": "MIT",
+    "devDependencies": {
+      "typescript": "^4.1.2"
+    },
+    "dependencies": {
+      "@citizenfx/client": "^1.0.3281-1"
+    }
+  }

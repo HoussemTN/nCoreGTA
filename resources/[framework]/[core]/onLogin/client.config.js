@@ -1,23 +1,7 @@
 module.exports = {
-    entry: './src/cmain.ts',
-    mode: 'production',
-    module: {
-      rules: [
-        {
-          test: /\.tsx?$/,
-          use: 'ts-loader',
-          exclude: /node_modules/,
-        },
-      ],
-    },
-    optimization: {
-      minimize: false,
-    },
-    resolve: {
-      extensions: ['.tsx', '.ts', '.js'],
-    },
+    entry: './src/UIDentity.js',
     output: {
-      filename: 'cmain.js',
+      filename: 'UIDentity.js',
       path: __dirname + '/dist/',
     },
-};
+  };

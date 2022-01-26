@@ -1,7 +1,3 @@
--- This resource is part of the default Cfx.re asset pack (cfx-server-data)
--- Altering or recreating for local use only is strongly discouraged.
-
-author 'SuperCoolNinja'
 fx_version 'cerulean'
 game 'gta5'
 
@@ -10,5 +6,15 @@ dependency 'yarn'
 
 webpack_config 'client.config.js'
 webpack_config 'server.config.js'
-client_script  'dist/cmain.js'
-server_script  'dist/smain.js'
+
+server_script "dist/smain.js"
+client_script "src/cmain.js"
+
+ui_page 'src/index.html'
+files {
+    'src/index.html',
+    'dist/UIDentity.js',
+    'src/style.css',
+    'src/menu/*.html',
+    'src/parents/*.jpg',
+}

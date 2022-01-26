@@ -27,4 +27,5 @@ export {
     VehicleWheelIndex
 } from './vehicle_enum';
 
-export {RotationToDirection, RayCastGamePlayCamera} from './Raycast'
+export {RotationToDirection, RayCastGamePlayCamera} from './Raycast';
+export {validateDate, validateString, validateWithFirstLetterUpper} from './Validator';
